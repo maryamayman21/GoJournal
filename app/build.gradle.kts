@@ -27,6 +27,12 @@ android {
         BuildFlavor.Premium.create(this)
         BuildFlavor.Free.create(this)
     }
+    signingConfigs {
+
+        BuildSigning.Release.create(this)
+        BuildSigning.ReleaseExternalQa.create(this)
+        BuildSigning.Debug.create(this)
+    }
 
     buildTypes {
 

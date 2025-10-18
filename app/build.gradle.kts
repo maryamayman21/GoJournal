@@ -22,7 +22,10 @@ android {
     flavorDimensions.add(BuildDimensions.STORE)
     flavorDimensions.add(BuildDimensions.APP)
     productFlavors {
-
+        BuildFlavor.Google.create(this)
+        BuildFlavor.Huawei.create(this)
+        BuildFlavor.Premium.create(this)
+        BuildFlavor.Free.create(this)
     }
 
     buildTypes {

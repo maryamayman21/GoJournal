@@ -19,6 +19,11 @@ android {
             useSupportLibrary = true
         }
     }
+    flavorDimensions.add(BuildDimensions.STORE)
+    flavorDimensions.add(BuildDimensions.APP)
+    productFlavors {
+
+    }
 
     buildTypes {
 

@@ -10,4 +10,9 @@ object DependenciesVersions {
     const val ACTIVITY_COMPOSE = "1.7.2"
     const val COMPOSE_UI = "1.4.0"
     const val MATERIAL_3 = "1.0.1"
+    const val RETROFIT = "2.11.0"
+    const val RETROFIT_COROUTINE_ADAPTER_VERSION = "0.9.2"
+    const val OKHTTP = "4.12.0"
+    const val HILT = "2.44"
+    const val ROOM = "2.6.1"
 }

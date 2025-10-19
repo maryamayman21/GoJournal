@@ -1,9 +1,12 @@
 plugins {
     id(plugs.BuildPlugins.ANDROID_APP)
     id(plugs.BuildPlugins.KOTLIN_ANDROID)
+    id(plugs.BuildPlugins.ANDROID)
+    kotlin(plugs.BuildPlugins.KAPT)
 }
 
 android {
+
     namespace = build.BuildConfig.APP_ID
     compileSdk = build.BuildConfig.COMPILE_SDK_VERSION
 

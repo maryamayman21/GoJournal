@@ -1,3 +1,13 @@
+import deps.androidx
+import deps.hilt
+import deps.loginModule
+import deps.okHttp
+import deps.retrofit
+import deps.room
+import deps.testDebugDeps
+import deps.testDeps
+import deps.testImplDeps
+
 plugins {
     id(plugs.BuildPlugins.ANDROID_APP)
     id(plugs.BuildPlugins.KOTLIN_ANDROID)
@@ -57,11 +67,11 @@ android {
 
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -79,18 +89,14 @@ android {
 
 dependencies {
 
-    implementation(deps.Dependencies.ANDROIDX_CORE)
-    implementation(deps.Dependencies.ANDROIDX_LIFECYCLE_RUNTIME_KTX)
-    implementation(deps.Dependencies.ANDROIDX_ACTIVITY_COMPOSE)
-    implementation(deps.Dependencies.ANDROIDX_UI)
-    implementation(deps.Dependencies.ANDROIDX_UI_GRAPHICS)
-    implementation(deps.Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
-    implementation(deps.Dependencies.ANDROIDX_MATERIAL3)
-    testImplementation(test.TestDependencies.ANDROIDX_JUNIT)
-    androidTestImplementation(test.TestDependencies.ANDROIDX_JUNIT)
-    androidTestImplementation(test.TestDependencies.ANDROIDX_ESPRESSO_CORE)
-    androidTestImplementation(test.TestDependencies.ANDROIDX_COMPOSE_UI_TEST)
-    debugImplementation(deps.Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
-    debugImplementation(test.TestDependencies.ANDROIDX_COMPOSE_UI_TEST_MANIFEST)
+    loginModule()
+    androidx()
+    hilt()
+    room()
+    okHttp()
+    retrofit()
+    testDeps()
+    testImplDeps()
+    testDebugDeps()
 
 }

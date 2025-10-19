@@ -29,9 +29,9 @@ android {
     }
     signingConfigs {
 
-        BuildSigning.Release.create(this)
-        BuildSigning.ReleaseExternalQa.create(this)
-        BuildSigning.Debug.create(this)
+        BuildSigning.Release(project).create(this)
+        BuildSigning.ReleaseExternalQa(project).create(this)
+        BuildSigning.Debug(project).create(this)
     }
 
     buildTypes {

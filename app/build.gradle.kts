@@ -35,7 +35,7 @@ android {
     }
 
     buildTypes {
-        BuildCreator.Release().create(this).apply {
+        BuildCreator.Release(project).create(this).apply {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -44,11 +44,11 @@ android {
         }
 
 
-        BuildCreator.Debug().create(this).apply {
+        BuildCreator.Debug(project).create(this).apply {
             signingConfig = signingConfigs.getByName(SigningTypes.DEBUG)
         }
 
-        BuildCreator.ReleaseExternalQa().create(this).apply {
+        BuildCreator.ReleaseExternalQa(project).create(this).apply {
             signingConfig = signingConfigs.getByName(SigningTypes.RELEASE_EXTERNAL_QA)
         }
 

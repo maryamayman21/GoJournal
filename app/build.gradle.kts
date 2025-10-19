@@ -1,55 +1,55 @@
 plugins {
-    id(BuildPlugins.ANDROID_APP)
-    id(BuildPlugins.KOTLIN_ANDROID)
+    id(plugs.BuildPlugins.ANDROID_APP)
+    id(plugs.BuildPlugins.KOTLIN_ANDROID)
 }
 
 android {
-    namespace = BuildConfig.APP_ID
-    compileSdk = BuildConfig.COMPILE_SDK_VERSION
+    namespace = build.BuildConfig.APP_ID
+    compileSdk = build.BuildConfig.COMPILE_SDK_VERSION
 
     defaultConfig {
-        applicationId = BuildConfig.APP_ID
-        minSdk = BuildConfig.MIN_SDK_VERSION
-        targetSdk = BuildConfig.TARGET_SDK_VERSION
-        versionCode = ReleaseConfig.VERSION_CODE
-        versionName = ReleaseConfig.VERSION_NAME
+        applicationId = build.BuildConfig.APP_ID
+        minSdk = build.BuildConfig.MIN_SDK_VERSION
+        targetSdk = build.BuildConfig.TARGET_SDK_VERSION
+        versionCode = release.ReleaseConfig.VERSION_CODE
+        versionName = release.ReleaseConfig.VERSION_NAME
 
-        testInstrumentationRunner = TestBuildConfig.TEST_INSTRUMENTATION_RUNNER
+        testInstrumentationRunner = test.TestBuildConfig.TEST_INSTRUMENTATION_RUNNER
         vectorDrawables {
             useSupportLibrary = true
         }
     }
-    flavorDimensions.add(BuildDimensions.STORE)
-    flavorDimensions.add(BuildDimensions.APP)
+    flavorDimensions.add(build.BuildDimensions.STORE)
+    flavorDimensions.add(build.BuildDimensions.APP)
     productFlavors {
-        BuildFlavor.Google.create(this)
-        BuildFlavor.Huawei.create(this)
-        BuildFlavor.Premium.create(this)
-        BuildFlavor.Free.create(this)
+        flavors.BuildFlavor.Google.create(this)
+        flavors.BuildFlavor.Huawei.create(this)
+        flavors.BuildFlavor.Premium.create(this)
+        flavors.BuildFlavor.Free.create(this)
     }
     signingConfigs {
 
-        BuildSigning.Release(project).create(this)
-        BuildSigning.ReleaseExternalQa(project).create(this)
-        BuildSigning.Debug(project).create(this)
+        signing.BuildSigning.Release(project).create(this)
+        signing.BuildSigning.ReleaseExternalQa(project).create(this)
+        signing.BuildSigning.Debug(project).create(this)
     }
 
     buildTypes {
-        BuildCreator.Release(project).create(this).apply {
+        build.BuildCreator.Release(project).create(this).apply {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName(SigningTypes.RELEASE)
+            signingConfig = signingConfigs.getByName(signing.SigningTypes.RELEASE)
         }
 
 
-        BuildCreator.Debug(project).create(this).apply {
-            signingConfig = signingConfigs.getByName(SigningTypes.DEBUG)
+        build.BuildCreator.Debug(project).create(this).apply {
+            signingConfig = signingConfigs.getByName(signing.SigningTypes.DEBUG)
         }
 
-        BuildCreator.ReleaseExternalQa(project).create(this).apply {
-            signingConfig = signingConfigs.getByName(SigningTypes.RELEASE_EXTERNAL_QA)
+        build.BuildCreator.ReleaseExternalQa(project).create(this).apply {
+            signingConfig = signingConfigs.getByName(signing.SigningTypes.RELEASE_EXTERNAL_QA)
         }
 
     }
@@ -76,18 +76,18 @@ android {
 
 dependencies {
 
-    implementation(Dependencies.ANDROIDX_CORE)
-    implementation(Dependencies.ANDROIDX_LIFECYCLE_RUNTIME_KTX)
-    implementation(Dependencies.ANDROIDX_ACTIVITY_COMPOSE)
-    implementation(Dependencies.ANDROIDX_UI)
-    implementation(Dependencies.ANDROIDX_UI_GRAPHICS)
-    implementation(Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
-    implementation(Dependencies.ANDROIDX_MATERIAL3)
-    testImplementation(TestDependencies.ANDROIDX_JUNIT)
-    androidTestImplementation(TestDependencies.ANDROIDX_JUNIT)
-    androidTestImplementation(TestDependencies.ANDROIDX_ESPRESSO_CORE)
-    androidTestImplementation(TestDependencies.ANDROIDX_COMPOSE_UI_TEST)
-    debugImplementation(Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
-    debugImplementation(TestDependencies.ANDROIDX_COMPOSE_UI_TEST_MANIFEST)
+    implementation(deps.Dependencies.ANDROIDX_CORE)
+    implementation(deps.Dependencies.ANDROIDX_LIFECYCLE_RUNTIME_KTX)
+    implementation(deps.Dependencies.ANDROIDX_ACTIVITY_COMPOSE)
+    implementation(deps.Dependencies.ANDROIDX_UI)
+    implementation(deps.Dependencies.ANDROIDX_UI_GRAPHICS)
+    implementation(deps.Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
+    implementation(deps.Dependencies.ANDROIDX_MATERIAL3)
+    testImplementation(test.TestDependencies.ANDROIDX_JUNIT)
+    androidTestImplementation(test.TestDependencies.ANDROIDX_JUNIT)
+    androidTestImplementation(test.TestDependencies.ANDROIDX_ESPRESSO_CORE)
+    androidTestImplementation(test.TestDependencies.ANDROIDX_COMPOSE_UI_TEST)
+    debugImplementation(deps.Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
+    debugImplementation(test.TestDependencies.ANDROIDX_COMPOSE_UI_TEST_MANIFEST)
 
 }

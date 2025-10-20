@@ -10,7 +10,7 @@ sealed class BuildFlavor(val name: String) {
     abstract fun create(namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationProductFlavor>): ApplicationProductFlavor
 
     //used for modules
-    abstract fun createLibray(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>): LibraryProductFlavor
+    abstract fun createLibrary(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>): LibraryProductFlavor
 
     object Google : BuildFlavor(FlavorTypes.GOOGLE) {
         override fun create(namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationProductFlavor>): ApplicationProductFlavor {
@@ -21,7 +21,7 @@ sealed class BuildFlavor(val name: String) {
             }
         }
 
-        override fun createLibray(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>): LibraryProductFlavor {
+        override fun createLibrary(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>): LibraryProductFlavor {
             return namedDomainObjectContainer.create(name) {
                 dimension = BuildDimensions.STORE
             }
@@ -38,7 +38,7 @@ sealed class BuildFlavor(val name: String) {
             }
         }
 
-        override fun createLibray(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>): LibraryProductFlavor {
+        override fun createLibrary(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>): LibraryProductFlavor {
             return namedDomainObjectContainer.create(name) {
                 dimension = BuildDimensions.STORE
 
@@ -56,7 +56,7 @@ sealed class BuildFlavor(val name: String) {
             }
         }
 
-        override fun createLibray(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>): LibraryProductFlavor {
+        override fun createLibrary(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>): LibraryProductFlavor {
             return namedDomainObjectContainer.create(name) {
                 dimension = BuildDimensions.APP
 
@@ -74,7 +74,7 @@ sealed class BuildFlavor(val name: String) {
             }
         }
 
-        override fun createLibray(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>): LibraryProductFlavor {
+        override fun createLibrary(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryProductFlavor>): LibraryProductFlavor {
             return namedDomainObjectContainer.create(name) {
                 dimension = BuildDimensions.APP
 

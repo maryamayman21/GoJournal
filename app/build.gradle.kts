@@ -12,7 +12,7 @@ plugins {
     id(plugs.BuildPlugins.ANDROID_APP)
     id(plugs.BuildPlugins.KOTLIN_ANDROID)
     id(plugs.BuildPlugins.ANDROID)
-    kotlin(plugs.BuildPlugins.KAPT)
+    id(plugs.BuildPlugins.KAPT)
 }
 
 android {
@@ -71,14 +71,14 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     buildFeatures {
         compose = true
         buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = deps.DependenciesVersions.KOTLIN_COMPILER
     }
     packaging {
         resources {
